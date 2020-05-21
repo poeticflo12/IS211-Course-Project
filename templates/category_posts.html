@@ -1,0 +1,31 @@
+
+<style>
+
+</style>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Category : {{category[1]}}</h1> <br>
+    {%for post in posts%}
+    <div class="box">
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <p>
+                    <strong style="color:#2B99D1;">@{{post[4]}}</strong> &nbsp; &nbsp;<small>Posted On: {{post[2]}}</small>
+                    <br> <br>
+                    <strong>{{post[0]}}</strong> <br>
+                    {{post[1]}}
+                    </p>
+                    <p>
+                        <small>permalink: <a href="/posts/{{post[3]}}">posts/{{post[3]}}</a></small>
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

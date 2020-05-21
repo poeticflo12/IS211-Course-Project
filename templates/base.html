@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>The Amazing Blog</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+        <style>
+          body{
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            background-color: #c7c6c6;
+          }
+          .navbar{
+            padding:5px;
+            background-color: #fff;
+            border-bottom: 1px solid #CDCDCD; 
+          }
+          .logo{
+            font-weight: bold;
+            font-size: 2.0em;
+            color:5e8b4d;
+            padding:20px 20px;
+            font-family: 'Freckle Face', cursive;
+          }
+          .container{
+            padding:20px;
+            
+          }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a href="/" class="logo">The Amazing Blog</a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <!-- <a class="navbar-item">
+                  Home
+                </a>
+          
+                <a class="navbar-item">
+                  Documentation
+                </a> -->
+                {% if not current_user.is_anonymous %}
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link">
+                    More
+                  </a>
+                  
+                  <div class="navbar-dropdown">
+                    <a class="navbar-item" href="{{url_for('index')}}">
+                      Home
+                    </a>
+                    <a class="navbar-item" href="{{url_for('dashboard')}}">
+                      Dashboard
+                    </a>
+                    <a class="navbar-item" href="{{url_for('posts')}}">
+                      Add Post
+                    </a>
+                    <a class="navbar-item" href="{{url_for('category')}}">
+                      Add Category
+                    </a>
+                    
+                    <!-- <a class="navbar-item">
+                      Report an issue
+                    </a> -->
+                  </div>
+                  
+                </div>
+                {% endif %}
+              </div>
+            </div>  
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  {% if current_user.is_anonymous %}
+                  <a class="button is-info" href="{{url_for('login')}}">
+                    <strong>Log In</strong>
+                  </a>
+                  {% else %}
+                  <p style="padding: 0px 30px 10px 10px; ">Welcome <span style="color:#EE3E80"> {{current_user.username}} </span>:P</p> 
+                  <a class="button is-light" href="{{url_for('logout')}}">
+                    Log Out
+                  </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+        </nav>
+        {% block content %}{% endblock %}
+        <script src="js/moment.js"></script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+
+<style>
+
+    </style>
+    {% extends "base.html" %}
+    
+    {% block content %}
+    <div class="container">
+        <a href="/" class="button is-primary" style="margin-bottom: 20px;">Go Back</a>
+        <div class="box">
+            <article class="media">
+                
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                        <strong style="color:#2B99D1;">@{{post[4]}}</strong> &nbsp; &nbsp;<small>Posted On: {{post[2]}}</small>
+                        <br> <br>
+                        <strong>{{post[0]}}</strong> <br>
+                        {{post[1]}}
+                        </p>
+                        <p>
+                            <small>category: <a href="#">{{post[5]}}</a></small> <br>
+           
+                            <small>permalink: <a href="/posts/{{post[3]}}">posts/{{post[3]}}</a></small>
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    </div>
+    {% endblock %}

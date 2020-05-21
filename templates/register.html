@@ -1,0 +1,55 @@
+<style>
+    .log-in{
+        width:400px;
+        margin: 0 auto;
+        padding:50px 0;
+    }
+    </style>
+    {% extends "base.html" %}
+    
+    {% block content %}
+    <form action="{{url_for('register')}}" method="post" autocomplete="off">
+    <div class="log-in">
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Username input" required name="username" autocomplete="off">
+            </div>
+    
+          </div>
+
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input class="input" type="email" placeholder="Email input" required name="email1">
+            </div>
+    
+          </div>
+          
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="password" placeholder="Password input" required name="password" autocomplete="off">
+    
+            </div>
+    
+          </div>
+          
+    
+          
+          <div class="field is-grouped">
+            <div class="control">
+              <input type="submit" value="Create User" class="button is-link">
+            </div>
+            <!-- <div class="control">
+              <input type="clear" value="Clear" class="button is-link">
+            </div> -->
+          </div>
+          
+    </div>  
+    </form>
+    <div  style="width:30%; margin:-40px auto 0 auto; ">
+        <span> Have an account?   <a href="{{url_for('login')}}">Log In</a></span>
+    </div>
+    
+    {% endblock %}

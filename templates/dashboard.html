@@ -1,0 +1,53 @@
+
+<style>
+table{
+    background-color: #fff;
+    width:100%;
+    padding:20px !important;
+    margin-top:30px;
+}
+th, td{
+    padding:10px 20px !important;
+}
+</style>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <a class="button is-info" href="{{url_for('posts')}}">
+        Create new post
+    </a>
+
+    <table class="table is-hoverable is-striped">
+        <thead>
+            <!-- <th># ID</th> -->
+            <th width="2%">Id</th>
+            <th width="12%">Title</th>
+            <th width="35%">Content</th>
+            <th width="12%">Publish Date</th>
+            <th width="2%">Is Published</th>
+            <th>Options</th>
+        </thead>
+        <tbody>
+           
+            {%for post in posts%}
+            <tr>
+            <td>{{post[0]}}</td>
+            <td>{{post[2]}}</td>
+            <td>{{post[3]}}</td>
+            <td>{{post[4]}}</td>
+            <td>{{post[6]}}</td>
+            <td><a class="button is-warning" href="/posts/{{post[0]}}/edit">edit</a>
+                <a class="button is-danger" href="/posts/{{post[0]}}/delete">delete</a>
+                {%if post[6] == 1 %}
+                    <a class="button is-light" href="/posts/{{post[0]}}/unpublish">unpublish</a></td>
+                {% else %}
+                    <a class="button is-light" href="/posts/{{post[0]}}/publish">publish</a></td>
+                {%endif%}
+            </tr>
+            {%endfor%}
+            
+        </tbody>
+    </table>    
+</div>
+{% endblock %}

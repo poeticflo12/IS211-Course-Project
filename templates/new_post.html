@@ -1,0 +1,67 @@
+<style>
+.log-in{
+    width:400px;
+    margin: 0 auto;
+    padding:50px 0;
+}
+textarea{
+    height:auto !important;
+}
+</style>
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+{% endwith %}
+<form action="{{url_for('posts')}}" method="post">
+<div class="log-in">
+        <div class="field">
+            <label class="label">Category</label>
+            <div class="select">
+                <select name="category">
+                    <option disabled selected>Select Category</option>
+                    {% for category in category%}
+                    <option value="{{category[0]}}">{{category[1]}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Post Title" required name="title">
+            </div>
+        </div>
+        
+        <div class="field">
+            <label class="label">Content</label>
+            <div class="control">
+                <textarea class="input" placeholder="Post Content" required name="content" rows="9"></textarea>
+            </div>
+        </div>
+        
+        
+        
+        
+
+        
+        <div class="field is-grouped">
+        <div class="control">
+            <input type="submit" value="Create New Post" class="button is-link">
+        </div>
+        <!-- <div class="control">
+            <input type="clear" value="Clear" class="button is-link">
+        </div> -->
+        </div>
+</div>  
+</form>
+
+{% endblock %}
